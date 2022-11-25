@@ -5,24 +5,26 @@
         "node": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:react/recommended",
         "standard-with-typescript"
+        
      
     ],
     "overrides": [
     ],
     "parserOptions": {
+        "tsconfigRootDir":"__dirname",
         "ecmaFeatures": { "jsx": true },
         "ecmaVersion": "latest",
         "sourceType": "module",
         "project":"C:/Users/ricar/OneDrive/Área de Trabalho/Estudos - Programaçao/clotingStore/tsconfig.json"
         
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react", "@typescript-eslint"],
     "rules": {
-        "react/react-in-jsx-scope":"off"
+        "react/react-in-jsx-scope":"off",
+        "@typescript-eslint/explicit-function-return-type":"off"
        
     }
 }
