@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className='headerComponent'>
      <div className="logo">
-        ClotingShoes
+        Cloting Store
      </div>
      <ul className='listHeader'>
         <li className='itemListHeader'>Explorar</li>

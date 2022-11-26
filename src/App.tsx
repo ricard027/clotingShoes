@@ -1,6 +1,7 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 //  components
+import Home from './pages/home/home.page'
 import { FunctionComponent } from 'react'
-import Header from './components/Header.component'
 //  styles
 import './App.css'
 
@@ -11,7 +12,11 @@ interface AppProps {
 const App: FunctionComponent<AppProps> = ({ message }) => {
   return (
     <div className="App">
-      <Header/>
+       <BrowserRouter>
+          <Routes>
+             <Route path='/' element={<Home/>}/>
+          </Routes>
+       </BrowserRouter>
     </div>
   )
 }
