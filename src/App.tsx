@@ -1,15 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 //  components
-import Home from './pages/home/home.page'
+import Home from './pages/home/Home'
 import { FunctionComponent } from 'react'
 //  styles
 import './App.css'
 
-interface AppProps {
-  message?: String
-}
-
-const App: FunctionComponent<AppProps> = ({ message }) => {
+const App: FunctionComponent = () => {
   return (
     <div className="App">
        <BrowserRouter>
