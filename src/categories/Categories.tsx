@@ -2,6 +2,7 @@ import './categories.css'
 import Category from '../types/category.types'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Categorieitem from '../categoriesItem/Categorieitem'
 const url = import.meta.env.VITE_API_URL
 
 const Categories = () => {
@@ -24,10 +25,7 @@ const Categories = () => {
     <div className='categories-container'>
       <div className="categories-content">
         {categories.map(categorieItem => (
-        <div className='category-item' key={categorieItem.id}>
-           <h3>{categorieItem.name}</h3>
-           <p>{categorieItem.displayName}</p>
-        </div>
+          <Categorieitem category={categorieItem} key={categorieItem.id}/>
         ))}
       </div>
     </div>
