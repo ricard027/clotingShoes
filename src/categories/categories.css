@@ -1,0 +1,41 @@
+.categories-container{
+height: 100vh;
+width: 90%;
+margin: 0 auto;
+}
+.categories-content{
+background-color: rgba(0,0,0,.1);
+height: 100%;
+display: grid;
+padding: 1rem;
+gap: .5rem;
+grid-template-areas:'fem male'
+                    'jackets jackets'
+                    'hats hats'
+                    'sneakers sneakers';
+}
+.category-item{
+background-color: green;
+border-radius: .2rem;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.category-item:nth-child(1){
+grid-area: sneakers;
+
+}
+.category-item:nth-child(2){
+grid-area: jackets;
+}
+.category-item:nth-child(3){
+grid-area: male;
+}
+.category-item:nth-child(4){
+grid-area: hats;
+}
+.category-item:nth-child(5){
+grid-area: fem;
+}
