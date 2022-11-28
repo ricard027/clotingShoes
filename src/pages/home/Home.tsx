@@ -1,5 +1,5 @@
-import Header from '../../components/header'
-import Categories from '../../categories/Categories'
+import Header from '../../components/header/header'
+import Categories from '../../components/categories/Categories'
 
 const Home = () => {
   return (
