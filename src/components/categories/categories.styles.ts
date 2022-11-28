@@ -1,8 +1,10 @@
-.categories-container{
+import styled from 'styled-components'
+
+export const CustomCategoty = styled.div`
 height: 100vh;
 width: 90%;
 margin: 0 auto;
-}
+
 .categories-content{
 background-color: rgba(0,0,0,.1);
 height: 100%;
@@ -11,6 +13,6 @@ padding: 1rem;
 gap: .5rem;
 grid-template-areas:'fem male'
                     'jackets jackets'
-                    'hats hats'
-                    'sneakers sneakers';
+                    'hats sneakers';
 }
+`

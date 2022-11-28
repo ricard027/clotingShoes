@@ -1,21 +1,21 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import Category from '../../types/category.types'
-import './categorieItem.css'
+import { Categoryitem } from './categoryitem.styles'
 
 interface CategoryProps {
   category: Category
-}
+}// style={{ backgroundImage: `url('${category.imageUrl}')` }}
 
 const categorieItem: FunctionComponent<CategoryProps> = ({ category }) => {
   return (
-    <div className='category-item ' style={{ backgroundImage: `url('${category.imageUrl}')` }}>
+    <Categoryitem backgroundImage={category.imageUrl}>
        <div className="category-name">
          <p>{category.displayName}</p>
          <p>Explorar</p>
        </div>
        <span className='category-blur active'></span>
 
-    </div>
+    </Categoryitem>
   )
 }
 

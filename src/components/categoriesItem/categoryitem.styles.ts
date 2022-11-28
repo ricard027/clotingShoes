@@ -1,32 +1,39 @@
-.category-item{
+import styled from 'styled-components'
+
+interface CategoryItemProps {
+  backgroundImage: string
+
+}
+
+export const Categoryitem = styled.div<CategoryItemProps>`
     border-radius: .2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position:relative;
-
+    background-image:${(props) => `url('${props.backgroundImage}')`};
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
     background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: color;
-    }
-    .category-item:nth-child(1){
+
+    &:nth-child(1){
     grid-area: sneakers;
     
     }
-    .category-item:nth-child(2){
+    &:nth-child(2){
     grid-area: jackets;
     }
-    .category-item:nth-child(3){
+    &:nth-child(3){
     grid-area: male;
     }
     .category-item:nth-child(4){
     grid-area: hats;
     }
-    .category-item:nth-child(5){
+    &:nth-child(5){
     grid-area: fem;
     }
 
@@ -75,3 +82,4 @@ display: block;
 .category-name p:nth-child(1) {
     font-weight: 600;
 }
+`
