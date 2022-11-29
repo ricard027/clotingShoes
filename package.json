@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .tsx . --fix",
+    "lint": "eslint --ext .ts . --fix",
     "husky:prepare": "husky install"
   },
   "dependencies": {
