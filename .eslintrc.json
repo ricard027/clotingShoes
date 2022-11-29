@@ -26,7 +26,9 @@
         "react/react-in-jsx-scope":"off",
         "@typescript-eslint/explicit-function-return-type":"off",
         "@typescript-eslint/triple-slash-reference":"off",
-        "@typescript-eslint/restrict-template-expressions":"off"
+        "@typescript-eslint/restrict-template-expressions":"off",
+        "@typescript-eslint/strict-boolean-expressions":"off"
+
        
     },
     "settings": {
