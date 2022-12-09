@@ -21,6 +21,7 @@ export const CustomHeader = styled.header`
   gap: 1.5rem;
   margin-right: 4%;
   align-items: center;
+  padding: 0 .5rem;
 
 }
 
@@ -33,12 +34,16 @@ export const CustomHeader = styled.header`
 
 }
 
+
+
+
 .listHeader .itemListHeader:hover,.logo:hover{
  color: #fff;
  opacity: 100%;
-}
+}                                                                                              
 .cart{
     position: relative;
+    
    
 }
 .qtdCart{
@@ -49,5 +54,6 @@ export const CustomHeader = styled.header`
     position: absolute;
     top: -10px;
     left:10px;
+ 
 }
 `
