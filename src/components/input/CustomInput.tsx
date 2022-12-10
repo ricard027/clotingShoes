@@ -9,7 +9,7 @@ interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const CustomInput: FunctionComponent<CustomInputProps> = React.forwardRef(
   (props, ref) => {
-    return <CustomInputContainer {...props} ref={ref} />
+    return <CustomInputContainer {...props} ref={ref as any} />
   }
 )
 CustomInput.displayName = 'CustomInput'
