@@ -11,8 +11,6 @@ export const SignUpContainer = styled.div`
 
   p{
     width: 100%;
-    margin-bottom: .5rem;
-    font-weight: 600;
 
   }
   button{
