@@ -8,11 +8,12 @@ const Createacount = () => {
   return (
     <>
         <Header/>
+
         <SignUpContainer >
           <SignUpContent>
               <SignUpHeadline> Crie sua conta </SignUpHeadline>
 
-              <SignUpContainer >
+             <SignUpContainer >
              <p>Nome</p>
              <CustomInput placeholder='digite seu nome'/>
              </SignUpContainer>
@@ -32,7 +33,7 @@ const Createacount = () => {
               <CustomInput placeholder='digite sua senha' type='password'/>
              </SignUpContainer>
 
-             <CustomButton startIcon={<FiLogIn size={18} />}> Criar conta</CustomButton>
+             <CustomButton startIcon={<FiLogIn size={18}/>}> Criar conta</CustomButton>
 
           </SignUpContent>
         </SignUpContainer>

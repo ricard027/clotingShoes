@@ -3,9 +3,23 @@ import Colors from '../../theme/theme.colors'
 
 export const SignUpContainer = styled.div`
   height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  p{
+    width: 100%;
+    margin-bottom: .5rem;
+    font-weight: 600;
+
+  }
+  button{
+    margin-top: .5rem;
+
+  }
+
 `
 
 export const SignUpHeadline = styled.p`
@@ -17,6 +31,7 @@ export const SignUpHeadline = styled.p`
   border-bottom: 1px solid #6c757d;
   width: 100%;
   text-align: center;
+ 
 `
 
 export const SignUpContent = styled.div`
@@ -24,6 +39,9 @@ export const SignUpContent = styled.div`
   flex-direction: column;
   align-items: center;
   width: 450px;
+  padding: 1rem;
+  height: 100%;
+ 
 `
 
 export const SignUpInputContainer = styled.div`
@@ -32,5 +50,6 @@ export const SignUpInputContainer = styled.div`
   p:nth-child(1) {
     font-weight: 600;
     margin-bottom: 5px;
+
   }
 `
