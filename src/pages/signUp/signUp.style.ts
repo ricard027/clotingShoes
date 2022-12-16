@@ -13,6 +13,7 @@ export const SignUpContainer = styled.div`
     width: 100%;
 
   }
+  
   button{
     margin-top: .5rem;
 
