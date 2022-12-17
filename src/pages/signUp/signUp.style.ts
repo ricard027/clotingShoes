@@ -9,10 +9,6 @@ export const SignUpContainer = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  p{
-    width: 100%;
-
-  }
   
   button{
     margin-top: .5rem;
@@ -20,6 +16,10 @@ export const SignUpContainer = styled.div`
   }
 
 `
+export const CustomParagraph = styled.p`
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: .4rem;`
 
 export const SignUpHeadline = styled.p`
   font-weight: 600;

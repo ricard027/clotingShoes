@@ -3,7 +3,7 @@ import CustomButton from '../../components/button/Custombutton'
 import Header from '../../components/header/header'
 import CustomInput from '../../components/input/CustomInput'
 import { FiLogIn } from 'react-icons/fi'
-import { SignUpContainer, SignUpContent, SignUpHeadline } from './signUp.style'
+import { CustomParagraph, SignUpContainer, SignUpContent, SignUpHeadline } from './signUp.style'
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import InputErrorMessageContainer from '../../components/input/InputErrorMessageContainer'
@@ -23,20 +23,20 @@ const Createacount = () => {
               <SignUpHeadline> Crie sua conta </SignUpHeadline>
 
              <SignUpContainer >
-             <p>Nome</p>
+             <CustomParagraph>Nome</CustomParagraph>
              <CustomInput placeholder='digite seu nome' {...register('nome', { required: true })} hasError={!!errors?.nome}/>
              {errors?.nome?.type === 'required' && <InputErrorMessageContainer>Nome é obrigatório</InputErrorMessageContainer>}
              </SignUpContainer>
 
              <SignUpContainer>
-              <p>Sobrenome</p>
+              <CustomParagraph>Sobrenome</CustomParagraph>
               <CustomInput placeholder='digite seu sobrenome' {...register('sobrenome', { required: true })} hasError={!!errors?.sobrenome}/>
               {errors?.sobrenome?.type === 'required' && <InputErrorMessageContainer>Sobrenome é obrigatório</InputErrorMessageContainer>}
 
              </SignUpContainer>
 
              <SignUpContainer>
-              <p>Email</p>
+              <CustomParagraph>Email</CustomParagraph>
               <CustomInput placeholder='digite seu email' {...register('email', {
                 required: true,
                 validate: (value) => {
@@ -48,7 +48,7 @@ const Createacount = () => {
              </SignUpContainer>
 
              <SignUpContainer>
-              <p>Senha</p>
+              <CustomParagraph>Senha</CustomParagraph>
               <CustomInput placeholder='digite sua senha' type='password' {...register('password', { required: true })} hasError={!!errors?.password}/>
              {errors?.password?.type === 'required' && <InputErrorMessageContainer>Senha é obrigatório</InputErrorMessageContainer>}
 
