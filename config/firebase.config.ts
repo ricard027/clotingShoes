@@ -1,13 +1,15 @@
 import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA00rLUfhjNVuK2czawR81wHhG8vjhTdvo',
-  authDomain: 'cloting-store.firebaseapp.com',
-  projectId: 'cloting-store',
-  storageBucket: 'cloting-store.appspot.com',
-  messagingSenderId: '321073613346',
-  appId: '1:321073613346:web:b3457b812e82d63fe4187b',
-  measurementId: 'G-Y2W438T6JT'
+  apiKey: 'AIzaSyCA16288nJ2MryEpmHHbksu-2ytji-KLLQ',
+  authDomain: 'cloting-store-d16f8.firebaseapp.com',
+  projectId: 'cloting-store-d16f8',
+  storageBucket: 'cloting-store-d16f8.appspot.com',
+  messagingSenderId: '549201916133',
+  appId: '1:549201916133:web:b3327eec4fc08f56ede40c',
+  measurementId: 'G-BCEY6LMFFW'
 }
 
 export const app = initializeApp(firebaseConfig)
+export const db = getFirestore(app)
