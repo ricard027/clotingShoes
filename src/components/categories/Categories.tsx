@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react'
 import { CustomCategoty } from './categories.styles'
 import Category from '../../types/category.types'
 import { BeatLoader } from 'react-spinners'
-import axios from 'axios'
 import Categorieitem from '../categoriesItem/Categorieitem'
 import Colors from '../../theme/theme.colors'
-const url = import.meta.env.VITE_API_URL
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../../../config/firebase.config'
+// const url = import.meta.env.VITE_API_URL
 
 const Categories = () => {
   const [loading, setLoading] = useState(false)
@@ -14,9 +15,16 @@ const Categories = () => {
 
   const fetchCategories = async () => {
     try {
+      const docFromFirestore: Category[] = []
       setLoading(true)
-      const { data } = await axios.get(`${url}/api/category`)
-      setCategoties(data)
+
+      const querySnapshot = await getDocs(collection(db, 'categories'))
+
+      querySnapshot.forEach((doc: any) => {
+        docFromFirestore.push(doc.data())
+      })
+
+      setCategoties(docFromFirestore)
       setLoading(false)
     } catch (error) {
       console.log(error)
