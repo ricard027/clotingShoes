@@ -8,8 +8,24 @@ import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import InputErrorMessageContainer from '../../components/input/InputErrorMessageContainer'
 
+interface SignUpForm {
+  name: string
+  lastName: string
+  email: string
+  password: string
+  passwordConfirmation: string
+}
+
 const Createacount = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm()
+  const {
+    register,
+    formState: { errors },
+    watch,
+    handleSubmit
+  } = useForm<SignUpForm>()
+
+  const watchPassword = watch('password')
+
   const handleSubmitPress = (data: any) => {
     console.log({ data })
   }
@@ -24,14 +40,14 @@ const Createacount = () => {
 
              <SignUpContainer >
              <CustomParagraph>Nome</CustomParagraph>
-             <CustomInput placeholder='digite seu nome' {...register('nome', { required: true })} hasError={!!errors?.nome}/>
-             {errors?.nome?.type === 'required' && <InputErrorMessageContainer>Nome é obrigatório</InputErrorMessageContainer>}
+             <CustomInput placeholder='digite seu nome' {...register('name', { required: true })} hasError={!!errors?.name}/>
+             {errors?.name?.type === 'required' && <InputErrorMessageContainer>Nome é obrigatório</InputErrorMessageContainer>}
              </SignUpContainer>
 
              <SignUpContainer>
               <CustomParagraph>Sobrenome</CustomParagraph>
-              <CustomInput placeholder='digite seu sobrenome' {...register('sobrenome', { required: true })} hasError={!!errors?.sobrenome}/>
-              {errors?.sobrenome?.type === 'required' && <InputErrorMessageContainer>Sobrenome é obrigatório</InputErrorMessageContainer>}
+              <CustomInput placeholder='digite seu sobrenome' {...register('lastName', { required: true })} hasError={!!errors?.lastName}/>
+              {errors?.lastName?.type === 'required' && <InputErrorMessageContainer>Sobrenome é obrigatório</InputErrorMessageContainer>}
 
              </SignUpContainer>
 
@@ -52,9 +68,39 @@ const Createacount = () => {
               <CustomInput placeholder='digite sua senha' type='password' {...register('password', { required: true, minLength: 8 })} hasError={!!errors?.password}/>
              {errors?.password?.type === 'required' && <InputErrorMessageContainer>Senha é obrigatório</InputErrorMessageContainer>}
              {errors?.password?.type === 'minLength' && <InputErrorMessageContainer>Senha deve conter no mínimo 8 caracteres</InputErrorMessageContainer>}
+              <CustomParagraph>Senha</CustomParagraph>
+              <CustomInput placeholder='digite sua senha' type='password' {...register('password', { required: true, minLength: 8 })} hasError={!!errors?.password}/>
+             {errors?.password?.type === 'required' && <InputErrorMessageContainer>Senha é obrigatório</InputErrorMessageContainer>}
+             {errors?.password?.type === 'minLength' && <InputErrorMessageContainer>Senha deve conter no mínimo 8 caracteres</InputErrorMessageContainer>}
 
              </SignUpContainer>
 
+             <SignUpContainer>
+            <p>Confirmação de Senha</p>
+            <CustomInput
+              hasError={!!errors?.passwordConfirmation}
+              placeholder="Digite novamente sua senha"
+              type="password"
+              {...register('passwordConfirmation', {
+                required: true,
+                validate: (value) => {
+                  return value === watchPassword
+                }
+              })}
+            />
+
+            {errors?.passwordConfirmation?.type === 'required' && (
+              <InputErrorMessageContainer>
+                A confirmação de senha é obrigatória.
+              </InputErrorMessageContainer>
+            )}
+
+            {errors?.passwordConfirmation?.type === 'validate' && (
+              <InputErrorMessageContainer>
+                A confirmação de senha precisa ser igual a senha.
+              </InputErrorMessageContainer>
+            )}
+          </SignUpContainer>
              <CustomButton startIcon={<FiLogIn size={18}/>} onClick={() => handleSubmit(handleSubmitPress)()}> Criar conta</CustomButton>
 
           </SignUpContent>
