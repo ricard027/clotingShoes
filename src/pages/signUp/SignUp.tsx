@@ -68,15 +68,10 @@ const Createacount = () => {
               <CustomInput placeholder='digite sua senha' type='password' {...register('password', { required: true, minLength: 8 })} hasError={!!errors?.password}/>
              {errors?.password?.type === 'required' && <InputErrorMessageContainer>Senha é obrigatório</InputErrorMessageContainer>}
              {errors?.password?.type === 'minLength' && <InputErrorMessageContainer>Senha deve conter no mínimo 8 caracteres</InputErrorMessageContainer>}
-              <CustomParagraph>Senha</CustomParagraph>
-              <CustomInput placeholder='digite sua senha' type='password' {...register('password', { required: true, minLength: 8 })} hasError={!!errors?.password}/>
-             {errors?.password?.type === 'required' && <InputErrorMessageContainer>Senha é obrigatório</InputErrorMessageContainer>}
-             {errors?.password?.type === 'minLength' && <InputErrorMessageContainer>Senha deve conter no mínimo 8 caracteres</InputErrorMessageContainer>}
-
              </SignUpContainer>
 
              <SignUpContainer>
-            <p>Confirmação de Senha</p>
+            <CustomParagraph>Confirmação de Senha</CustomParagraph>
             <CustomInput
               hasError={!!errors?.passwordConfirmation}
               placeholder="Digite novamente sua senha"
