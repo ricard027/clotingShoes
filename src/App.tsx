@@ -7,6 +7,7 @@ import { FunctionComponent } from 'react'
 import Home from './pages/home/Home'
 import LoginPage from './pages/login/LoginPage'
 import SignUp from './pages/signUp/SignUp'
+
 const App: FunctionComponent = () => {
   return (
     <div className="App">

@@ -7,9 +7,12 @@ import { CustomParagraph, SignUpContainer, SignUpContent, SignUpHeadline } from 
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import InputErrorMessageContainer from '../../components/input/InputErrorMessageContainer'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth, db } from '../../../config/firebase.config'
+import { addDoc, collection } from 'firebase/firestore'
 
 interface SignUpForm {
-  name: string
+  firstName: string
   lastName: string
   email: string
   password: string
@@ -26,8 +29,18 @@ const Createacount = () => {
 
   const watchPassword = watch('password')
 
-  const handleSubmitPress = (data: any) => {
-    console.log({ data })
+  const handleSubmitPress = async (data: SignUpForm) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password)
+      await addDoc(collection(db, 'users'), {
+        id: userCredential.user.uid,
+        email: userCredential.user.email,
+        firstName: data.firstName,
+        lastName: data.lastName
+      })
+    } catch (error) {
+      console.log({ error })
+    }
   }
   console.log({ errors })
   return (
@@ -40,8 +53,8 @@ const Createacount = () => {
 
              <SignUpContainer >
              <CustomParagraph>Nome</CustomParagraph>
-             <CustomInput placeholder='digite seu nome' {...register('name', { required: true })} hasError={!!errors?.name}/>
-             {errors?.name?.type === 'required' && <InputErrorMessageContainer>Nome é obrigatório</InputErrorMessageContainer>}
+             <CustomInput placeholder='digite seu nome' {...register('firstName', { required: true })} hasError={!!errors?.name}/>
+             {errors?.firstName?.type === 'required' && <InputErrorMessageContainer>Nome é obrigatório</InputErrorMessageContainer>}
              </SignUpContainer>
 
              <SignUpContainer>
