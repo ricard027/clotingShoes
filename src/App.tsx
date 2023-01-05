@@ -7,8 +7,13 @@ import { FunctionComponent } from 'react'
 import Home from './pages/home/Home'
 import LoginPage from './pages/login/LoginPage'
 import SignUp from './pages/signUp/SignUp'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../config/firebase.config'
 
 const App: FunctionComponent = () => {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user)
+  })
   return (
     <div className="App">
        <BrowserRouter>

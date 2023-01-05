@@ -5,6 +5,9 @@ import { CustomHeader } from './header.style'
 import { FiShoppingCart } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 
+import { signOut } from 'firebase/auth'
+import { auth } from '../../../config/firebase.config'
+
 const Header = () => {
   const navigate = useNavigate()
 
@@ -26,6 +29,7 @@ const Header = () => {
         <li className='itemListHeader' onClick={getExplorerPage}>Explorar</li>
         <li className='itemListHeader' onClick={getLoginPage}>Login</li>
         <li className='itemListHeader' onClick={getCreateAcountPage}>Criar Conta</li>
+        <li className='itemListHeader' onClick={() => signOut(auth)}>sair</li>
         <li className='itemListHeader cart'>
             <FiShoppingCart />
             <span className='qtdCart'>+99</span>
