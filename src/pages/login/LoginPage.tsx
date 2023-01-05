@@ -8,6 +8,8 @@ import Header from '../../components/header/header'
 import InputErrorMessageContainer from '../../components/input/InputErrorMessageContainer'
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
+import { signInWithEmailAndPassword, AuthError, AuthErrorCodes } from 'firebase/auth'
+import { auth } from '../../../config/firebase.config'
 
 // Styles
 import {
@@ -18,15 +20,29 @@ import {
   LoginSubtitle
 } from './loginPage.style'
 
+interface LoginForm {
+  email: string
+  password: string
+}
+
 const LoginPage = () => {
   const {
     register,
     formState: { errors },
+    setError,
     handleSubmit
-  } = useForm()
-  console.log({ errors })
-  const handleSubmitPress = (data: any) => {
-    console.log({ data })
+  } = useForm<LoginForm>()
+
+  const handleSubmitPress = async (data: LoginForm) => {
+    try {
+      const credentialUser = await signInWithEmailAndPassword(auth, data.email, data.password)
+      console.log(credentialUser)
+    } catch (error) {
+      const _error = error as AuthError
+      console.log(_error)
+      if (_error.code === AuthErrorCodes.INVALID_PASSWORD) { return setError('password', { type: 'wrongPassword' }) }
+      if (_error.code === AuthErrorCodes.USER_DELETED) { return setError('email', { type: 'emailNotExist' }) }
+    }
   }
 
   return (<>
@@ -56,6 +72,7 @@ const LoginPage = () => {
           hasError={!!errors?.email}/>
           {errors?.email?.type === 'required' && <InputErrorMessageContainer>o email é obrigatório</InputErrorMessageContainer>}
           {errors?.email?.type === 'validate' && <InputErrorMessageContainer>Por favor informe um email válido</InputErrorMessageContainer>}
+          {errors?.email?.type === 'emailNotExist' && <InputErrorMessageContainer> Este e-mail não existe</InputErrorMessageContainer>}
         </LoginInputContainer>
 
         <LoginInputContainer>
@@ -65,6 +82,7 @@ const LoginPage = () => {
           { ...register('password', { required: true })}
           hasError={!!errors?.password}/>
           {errors?.password?.type === 'required' && <InputErrorMessageContainer>a senha é obrigatória</InputErrorMessageContainer>}
+          {errors?.password?.type === 'wrongPassword' && <InputErrorMessageContainer> senha inválida</InputErrorMessageContainer>}
 
         </LoginInputContainer>
 
