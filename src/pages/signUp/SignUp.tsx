@@ -1,13 +1,14 @@
-// component
+// components
 import CustomButton from '../../components/button/Custombutton'
 import Header from '../../components/header/header'
 import CustomInput from '../../components/input/CustomInput'
 import { FiLogIn } from 'react-icons/fi'
 import { CustomParagraph, SignUpContainer, SignUpContent, SignUpHeadline } from './signUp.style'
+
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import InputErrorMessageContainer from '../../components/input/InputErrorMessageContainer'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, AuthErrorCodes, AuthError } from 'firebase/auth'
 import { auth, db } from '../../../config/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
 
@@ -23,6 +24,7 @@ const Createacount = () => {
   const {
     register,
     formState: { errors },
+    setError,
     watch,
     handleSubmit
   } = useForm<SignUpForm>()
@@ -39,7 +41,10 @@ const Createacount = () => {
         lastName: data.lastName
       })
     } catch (error) {
-      console.log({ error })
+      const _error = error as AuthError
+      if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
+        return setError('email', { type: 'emailInUse' })
+      }
     }
   }
   console.log({ errors })
@@ -74,6 +79,7 @@ const Createacount = () => {
               })} hasError={!!errors?.email}/>
              {errors?.email?.type === 'required' && <InputErrorMessageContainer> Email é obrigatório</InputErrorMessageContainer>}
              {errors?.email?.type === 'validate' && <InputErrorMessageContainer> Insira um email válido</InputErrorMessageContainer>}
+             {errors?.email?.type === 'emailInUse' && <InputErrorMessageContainer> Este e-mail ja está sendo utilizado.</InputErrorMessageContainer>}
              </SignUpContainer>
 
              <SignUpContainer>
