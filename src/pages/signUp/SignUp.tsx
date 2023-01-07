@@ -38,7 +38,8 @@ const Createacount = () => {
         id: userCredential.user.uid,
         email: userCredential.user.email,
         firstName: data.firstName,
-        lastName: data.lastName
+        lastName: data.lastName,
+        provider: 'firebase'
       })
     } catch (error) {
       const _error = error as AuthError
@@ -58,7 +59,7 @@ const Createacount = () => {
 
              <SignUpContainer >
              <CustomParagraph>Nome</CustomParagraph>
-             <CustomInput placeholder='digite seu nome' {...register('firstName', { required: true })} hasError={!!errors?.name}/>
+             <CustomInput placeholder='digite seu nome' {...register('firstName', { required: true })} hasError={!!errors?.firstName}/>
              {errors?.firstName?.type === 'required' && <InputErrorMessageContainer>Nome é obrigatório</InputErrorMessageContainer>}
              </SignUpContainer>
 

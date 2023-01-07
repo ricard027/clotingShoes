@@ -8,8 +8,8 @@ import Header from '../../components/header/header'
 import InputErrorMessageContainer from '../../components/input/InputErrorMessageContainer'
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
-import { signInWithEmailAndPassword, AuthError, AuthErrorCodes } from 'firebase/auth'
-import { auth } from '../../../config/firebase.config'
+import { signInWithEmailAndPassword, AuthError, AuthErrorCodes, signInWithPopup } from 'firebase/auth'
+import { auth, db, googleProvider } from '../../../config/firebase.config'
 
 // Styles
 import {
@@ -19,6 +19,7 @@ import {
   LoginInputContainer,
   LoginSubtitle
 } from './loginPage.style'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 
 interface LoginForm {
   email: string
@@ -45,6 +46,27 @@ const LoginPage = () => {
     }
   }
 
+  const handleGoogleSubmitPress = async () => {
+    try {
+      const credentialUser = await signInWithPopup(auth, googleProvider)
+      const querySnapshot = await getDocs(query(collection(db, 'users'), where('id', '==', credentialUser.user.uid)))
+      console.log({ credentialUser })
+      const user = querySnapshot.docs[0]?.data()
+
+      if (!user) {
+        await addDoc(collection(db, 'users'), {
+          id: credentialUser.user.uid,
+          email: credentialUser.user.email,
+          name: credentialUser.user.displayName?.split(' ')[0],
+          lastName: credentialUser.user.displayName?.split(' ')[1],
+          provider: 'google'
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (<>
 
     <Header />
@@ -53,7 +75,7 @@ const LoginPage = () => {
       <LoginContent>
         <LoginHeadline>Entre com a sua conta</LoginHeadline>
 
-        <CustomButton startIcon={<BsGoogle size={18} />}>
+        <CustomButton startIcon={<BsGoogle size={18} />} onClick={() => handleGoogleSubmitPress()}>
           Entrar com o Google
         </CustomButton>
 
