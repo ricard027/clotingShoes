@@ -6,11 +6,14 @@ import { FiLogIn } from 'react-icons/fi'
 import { CustomParagraph, SignUpContainer, SignUpContent, SignUpHeadline } from './signUp.style'
 
 import { useForm } from 'react-hook-form'
+import { useContext, useEffect } from 'react'
 import validator from 'validator'
 import InputErrorMessageContainer from '../../components/input/InputErrorMessageContainer'
 import { createUserWithEmailAndPassword, AuthErrorCodes, AuthError } from 'firebase/auth'
 import { auth, db } from '../../../config/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
+import { UserContext } from '../../contexts/user.context'
+import { useNavigate } from 'react-router-dom'
 
 interface SignUpForm {
   firstName: string
@@ -21,6 +24,13 @@ interface SignUpForm {
 }
 
 const Createacount = () => {
+  const navigate = useNavigate()
+  const { isAuthenticated } = useContext(UserContext)
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/')
+    }
+  }, [isAuthenticated])
   const {
     register,
     formState: { errors },
