@@ -14,18 +14,23 @@ const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
   const navigate = useNavigate()
 
+  const getHomePage = () => {
+    navigate('/')
+  }
+
   const getLoginPage = () => {
     navigate('/login')
   }
   const getExplorerPage = () => {
-    navigate('/')
+    navigate('/explorer')
   }
   const getCreateAcountPage = () => {
     navigate('/create-acount')
   }
+
   return (
     <CustomHeader>
-     <div className="logo">
+     <div className="logo" onClick={getHomePage}>
         Cloting Store
      </div>
      <ul className='listHeader'>
