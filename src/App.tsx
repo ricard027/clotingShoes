@@ -17,6 +17,7 @@ import { auth, db } from '../config/firebase.config'
 import { UserContext } from './contexts/user.context'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import ExplorerPage from './pages/explorer/Explorer'
+import CategoryDetailsPage from './pages/categoryDetailsPage/CategoryDetailsPage'
 
 const App: FunctionComponent = () => {
   const [initiaLising, setIsInitializing] = useState(true)
@@ -48,6 +49,7 @@ const App: FunctionComponent = () => {
           <Routes>
              <Route path='/' element={<Home/>}/>
              <Route path='/explorer' element={<ExplorerPage/>}/>
+             <Route path='/category/:id' element={<CategoryDetailsPage/>}/>
              <Route path='login' element={<LoginPage/>}/>
              <Route path='create-acount' element={<SignUp/>}/>
           </Routes>
