@@ -18,6 +18,7 @@ import { UserContext } from './contexts/user.context'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import ExplorerPage from './pages/explorer/Explorer'
 import CategoryDetailsPage from './pages/categoryDetailsPage/CategoryDetailsPage'
+import Cart from './components/cart/Cart.component'
 
 const App: FunctionComponent = () => {
   const [initiaLising, setIsInitializing] = useState(true)
@@ -53,6 +54,7 @@ const App: FunctionComponent = () => {
              <Route path='login' element={<LoginPage/>}/>
              <Route path='create-acount' element={<SignUp/>}/>
           </Routes>
+          <Cart/>
        </BrowserRouter>
     </div>
   )

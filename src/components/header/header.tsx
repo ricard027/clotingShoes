@@ -9,9 +9,11 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../../config/firebase.config'
 import { useContext } from 'react'
 import { UserContext } from '../../contexts/user.context'
+import { Cartcontext } from '../../contexts/cart.context'
 
 const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
+  const { toogleCart } = useContext(Cartcontext)
   const navigate = useNavigate()
 
   const getHomePage = () => {
@@ -45,7 +47,7 @@ const Header = () => {
          <>
           <li className='itemListHeader' onClick={() => signOut(auth)}>sair</li>
          </>)}
-        <li className='itemListHeader cart'>
+        <li className='itemListHeader cart' onClick={toogleCart}>
             <FiShoppingCart />
             <span className='qtdCart'>+99</span>
         </li>
