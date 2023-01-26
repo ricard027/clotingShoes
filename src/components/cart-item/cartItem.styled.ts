@@ -9,6 +9,7 @@ export const CartItemContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+
   p {
     color: ${Colors.text.dark};
   }
@@ -31,6 +32,8 @@ export const CartItemInfo = styled.div`
   flex-direction: column;
   margin-left: 20px;
   flex: 1;
+
+
   p:nth-child(1) {
     font-weight: 600;
     margin-bottom: 5px;
@@ -44,6 +47,9 @@ export const CartItemQuantity = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
+
+
+
   p {
     margin-left: 10px;
     margin-right: 10px;
