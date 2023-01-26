@@ -13,7 +13,7 @@ import { Cartcontext } from '../../contexts/cart.context'
 
 const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
-  const { toogleCart } = useContext(Cartcontext)
+  const { toogleCart, productCount } = useContext(Cartcontext)
   const navigate = useNavigate()
 
   const getHomePage = () => {
@@ -49,7 +49,7 @@ const Header = () => {
          </>)}
         <li className='itemListHeader cart' onClick={toogleCart}>
             <FiShoppingCart />
-            <span className='qtdCart'>+99</span>
+            <span className='qtdCart'>{productCount}</span>
         </li>
      </ul>
     </CustomHeader>
