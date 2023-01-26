@@ -1,7 +1,7 @@
 import Product from './product.types'
 
 interface CartProduct extends Product {
-  quantity: Number
+  quantity: number
 }
 
 export default CartProduct

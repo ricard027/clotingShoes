@@ -26,6 +26,7 @@ export const CartContainer = styled.div<CartContainerPros>`
 
 export const CartEscapeArea = styled.div`
   width: 100%;
+
 `
 
 export const CartContent = styled.div`
@@ -35,6 +36,10 @@ export const CartContent = styled.div`
   background-color: white;
   padding: 20px;
   overflow-y: scroll;
+  
+ div:nth-child(1){
+  border:solid red;
+ }
 `
 export const CartTitle = styled.p`
   font-size: 1.325rem;

@@ -19,10 +19,13 @@ interface ProductItemProps {
 
 const ProductItem: FunctionComponent<ProductItemProps> = ({ product }) => {
   const { addProductToCart } = useContext(Cartcontext)
+  const handleAddProduct = () => {
+    addProductToCart(product)
+  }
   return (
     <ProductContainer>
      <ProductImage imageUrl={product.imageUrl}>
-        <CustomButton startIcon={<BsCartPlus/>} onClick={addProductToCart}>adicionar ao carrinho </CustomButton>
+        <CustomButton startIcon={<BsCartPlus/>} onClick={handleAddProduct}>adicionar ao carrinho </CustomButton>
      </ProductImage>
 
       <ProductInfo>
