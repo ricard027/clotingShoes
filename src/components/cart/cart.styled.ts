@@ -42,6 +42,9 @@ export const CartTitle = styled.p`
   font-size: 1.325rem;
   font-weight: 600;
   margin-bottom: 15px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 `
 export const CartTotal = styled.p`
   font-weight: 600;
