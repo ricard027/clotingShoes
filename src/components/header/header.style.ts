@@ -47,13 +47,14 @@ export const CustomHeader = styled.header`
    
 }
 .qtdCart{
-    font-size: 10px;
-    padding: .1rem;
+    font-size: .7em;
+    text-align: center;
+    width: 1rem;
     background-color: red;
     border-radius: 50%;
     position: absolute;
     top: -10px;
-    left:10px;
- 
+    left:1rem;
+  
 }
 `
