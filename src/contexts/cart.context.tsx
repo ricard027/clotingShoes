@@ -31,20 +31,15 @@ export const Cartcontext = createContext<IcartContext>({
 })
 
 const CartContextProvider: FunctionComponent<CartcontextProps> = ({ children }) => {
+  const LOCAL_STORAGE_KEY = 'cartProducts'
   const [isVisible, setIsvisible] = useState(false)
-  const [products, setProducts] = useState<CartProduct[]>([])
+  const [products, setProducts] = useState<CartProduct[]>(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)!) || []
+  })
 
   useEffect(() => {
-    const productsFromlocalStorage = JSON.parse(
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      localStorage.getItem('cartProducts')!
-    )
-
-    setProducts(productsFromlocalStorage)
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('cartProducts', JSON.stringify(products))
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products))
   }, [products])
 
   const productTotalPrice = useMemo(() => {

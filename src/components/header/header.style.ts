@@ -53,6 +53,7 @@ export const CustomHeader = styled.header`
     background-color: red;
     border-radius: 50%;
     position: absolute;
+    display:block;
     top: -10px;
     left:1rem;
   
