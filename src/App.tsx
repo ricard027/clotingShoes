@@ -19,6 +19,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore'
 import ExplorerPage from './pages/explorer/Explorer'
 import CategoryDetailsPage from './pages/categoryDetailsPage/CategoryDetailsPage'
 import Cart from './components/cart/Cart.component'
+import CheckoutPage from './pages/checkout/CheckoutPage'
 
 const App: FunctionComponent = () => {
   const [initiaLising, setIsInitializing] = useState(true)
@@ -51,6 +52,7 @@ const App: FunctionComponent = () => {
              <Route path='/' element={<Home/>}/>
              <Route path='/explorer' element={<ExplorerPage/>}/>
              <Route path='/category/:id' element={<CategoryDetailsPage/>}/>
+             <Route path='/checkout' element={<CheckoutPage/>}/>
              <Route path='login' element={<LoginPage/>}/>
              <Route path='create-acount' element={<SignUp/>}/>
           </Routes>
