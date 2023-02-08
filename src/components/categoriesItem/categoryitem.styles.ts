@@ -50,7 +50,8 @@ export const Categoryitem = styled.div<CategoryItemProps>`
     border: 1px solid (0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: all 0.5s ease;
-    z-index: 1;
+    z-index:1
+
 }
 
 .category-blur{
@@ -65,6 +66,7 @@ export const Categoryitem = styled.div<CategoryItemProps>`
     width: 100%;
     height: 100%;
     transition:all .5s ease-in;
+
 }
 
 .category-name:hover ~ .active{
