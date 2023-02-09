@@ -1,4 +1,4 @@
-import { FunctionComponent, useContext } from 'react'
+import { FunctionComponent, useContext, useEffect } from 'react'
 import { BsBagCheck } from 'react-icons/bs'
 
 import { Cartcontext } from '../../contexts/cart.context'
@@ -11,14 +11,22 @@ import {
   CheckoutProducts,
   CheckoutTotal
 } from './checkout.styles'
+import { UserContext } from '../../contexts/user.context'
+import { useNavigate } from 'react-router-dom'
 
 const Checkout: FunctionComponent = () => {
+  const navigate = useNavigate()
   const { products, productsTotalPrice } = useContext(Cartcontext)
+  const { isAuthenticated } = useContext(UserContext)
+
+  useEffect(() => {
+    !isAuthenticated &&
+     navigate('/login')
+  }, [isAuthenticated])
 
   return (
     <CheckoutContainer>
       <CheckoutTitle>Checkout</CheckoutTitle>
-
       {products.length > 0
         ? (
         <>

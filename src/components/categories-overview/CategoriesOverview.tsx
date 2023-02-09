@@ -6,9 +6,10 @@ import { Container } from './categories.styled'
 
 // utilities
 import { CategoryContext } from '../../contexts/category.context'
+import LoadingComponent from '../loading/loading.component'
 
 const CategoriesOverview: FunctionComponent = () => {
-  const { categories, fetchCategories } = useContext(CategoryContext)
+  const { categories, fetchCategories, loading } = useContext(CategoryContext)
 
   useEffect(() => {
     if (categories.length === 0) {
@@ -17,9 +18,12 @@ const CategoriesOverview: FunctionComponent = () => {
   }, [])
   return (
     <Container>
-       {categories.map((category) => (
+
+       {loading
+         ? <LoadingComponent/>
+         : categories.map((category) => (
           <CategoryOverview category={category} key={category.id}/>
-       ))}
+         ))}
     </Container>
   )
 }
