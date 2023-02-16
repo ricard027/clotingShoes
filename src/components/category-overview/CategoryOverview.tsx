@@ -14,7 +14,7 @@ const CategoryOverview: FunctionComponent<CategoryOverviewProps> = ({ category }
         {category.displayName}
       </CategoryTitle>
       <ProductsContainer>
-        {category.products.slice(0, 3).map((product) => (
+        {category.products.slice(0, 5).map((product) => (
            <ProductItem key={product.id} product={product}/>
         ))}
       </ProductsContainer>

@@ -16,6 +16,7 @@ export const CategoryTitle = styled.p`
 export const ProductsContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 3rem;
   flex-wrap: wrap;
 `
