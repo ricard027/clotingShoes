@@ -13,12 +13,13 @@
     ],
     "overrides": [
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "tsconfigRootDir":"__dirname",
         "ecmaFeatures": { "jsx": true },
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project":"C:/Users/ricar/OneDrive/Área de Trabalho/Estudos - Programaçao/clotingStore/tsconfig.json"
+        "project":"C:/Workspace/clotingStore/tsconfig.json"
         
     },
     "plugins": ["react", "@typescript-eslint"],
