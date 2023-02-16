@@ -10,6 +10,7 @@ export const CartItemContainer = styled.div`
   align-items: center;
   margin-bottom: 15px;
   z-index: 1000;
+
   
 
   p {
